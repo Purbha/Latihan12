@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AbsenActivity">
+
+    <ImageView
+        android:id="@+id/imageView_Absen_Atas"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:scaleType="fitXY"
+        android:contentDescription="@string/imageView_Absen_Bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bg_atas" />
+
+    <ImageView
+        android:id="@+id/imageView_Absen_Bawah"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:scaleType="fitXY"
+        android:contentDescription="@string/imageView_Absen_Bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/bg_bawah" />
+
+    <TextView
+        android:id="@+id/textView_Absen_Judul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/textView_Absen_Judul"
+        style="@style/textViewMain_Judul"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_Absen_Jam"
+        style="@style/textViewMain_Sub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/textView_Absen_Jam"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_Absen_Atas" />
+
+    <EditText
+        android:id="@+id/editText_Absen_Jam"
+        style="@style/editTextMain_Sub"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:enabled="false"
+        android:inputType="text"
+        android:hint="@string/textView_Absen_Jam"
+        android:autofillHints="@string/textView_Absen_Jam"
+        app:layout_constraintStart_toEndOf="@+id/textView_Absen_Jam"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_Absen_Atas" />
+
+    <ImageView
+        android:id="@+id/imageView_Absen_Jam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/imageView_Absen_Jam"
+        app:layout_constraintStart_toEndOf="@+id/editText_Absen_Jam"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_Absen_Atas"
+        app:srcCompat="@drawable/icon_jam" />
+
+    <TextView
+        android:id="@+id/textView_Absen_Tanggal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/textView_Absen_Tanggal"
+        style="@style/textViewMain_Sub"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Absen_Jam" />
+
+    <EditText
+        android:id="@+id/editText_Absen_Tanggal"
+        style="@style/editTextMain_Sub"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="@string/textView_Absen_Tanggal"
+        android:autofillHints="@string/textView_Absen_Tanggal"
+        android:enabled="false"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/textView_Absen_Tanggal"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Absen_Jam" />
+
+    <ImageView
+        android:id="@+id/imageView_Absen_Kalender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/imageView_Absen_Kalender"
+        app:layout_constraintStart_toEndOf="@+id/editText_Absen_Tanggal"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Absen_Jam"
+        app:srcCompat="@drawable/icon_kalender" />
+
+    <Button
+        android:id="@+id/button_Absen_Submit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/button_Absen_Submit"
+        style="@style/buttonMain_Login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Absen_Tanggal" />
+
+</android.support.constraint.ConstraintLayout>
