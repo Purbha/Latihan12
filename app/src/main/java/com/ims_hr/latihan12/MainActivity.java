@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Inisial() {
-        LV_Nama = (ListView) findViewById(R.id.listView_Main_Nama);
+        LV_Nama = findViewById(R.id.listView_Main_Nama);
     }
 
     private void Isi_List() {
