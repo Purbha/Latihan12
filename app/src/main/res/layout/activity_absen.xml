@@ -21,12 +21,13 @@
         android:id="@+id/imageView_Absen_Bawah"
         android:layout_width="0dp"
         android:layout_height="100dp"
-        android:scaleType="fitXY"
         android:contentDescription="@string/imageView_Absen_Bg"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/bg_bawah" />
+        app:srcCompat="@drawable/bg_bawah"
+        tools:ignore="ImageContrastCheck" />
 
     <TextView
         android:id="@+id/textView_Absen_Judul"
@@ -57,10 +58,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="10dp"
-        android:autofillHints="@string/textView_Absen_Jam"
+        android:importantForAutofill="no"
         android:ems="10"
         android:enabled="false"
-        android:hint="@string/textView_Absen_Jam"
+        android:hint="@string/dummy_Jam"
         android:inputType="text"
         app:layout_constraintStart_toEndOf="@+id/textView_Absen_Jam"
         app:layout_constraintTop_toBottomOf="@+id/imageView_Absen_Atas" />
@@ -74,7 +75,8 @@
         android:contentDescription="@string/imageView_Absen_Jam"
         app:layout_constraintStart_toEndOf="@+id/editText_Absen_Jam"
         app:layout_constraintTop_toBottomOf="@+id/imageView_Absen_Atas"
-        app:srcCompat="@drawable/icon_jam" />
+        app:srcCompat="@drawable/icon_jam"
+        tools:ignore="ImageContrastCheck" />
 
     <TextView
         android:id="@+id/textView_Absen_Tanggal"
@@ -95,8 +97,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:ems="10"
-        android:hint="@string/textView_Absen_Tanggal"
-        android:autofillHints="@string/textView_Absen_Tanggal"
+        android:hint="@string/dummy_Tanggal"
+        android:importantForAutofill="no"
         android:enabled="false"
         android:inputType="textPersonName"
         app:layout_constraintStart_toEndOf="@+id/textView_Absen_Tanggal"

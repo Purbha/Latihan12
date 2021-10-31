@@ -12,4 +12,6 @@
     <string name="imageView_Absen_Kalender">Icon Calendar</string>
     <string name="button_Absen_Submit">Submit</string>
     <string name="imageView_Absen_Jam">Icon Clock</string>
+    <string name="dummy_Jam">99:99</string>
+    <string name="dummy_Tanggal">9999-99-99</string>
 </resources>

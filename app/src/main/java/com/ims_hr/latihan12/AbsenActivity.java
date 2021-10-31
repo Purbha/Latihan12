@@ -6,7 +6,6 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -20,13 +19,27 @@ import java.util.Calendar;
 public class AbsenActivity extends AppCompatActivity {
 
     TextView TV_Judul;
-    String Nama_Mahasiswa = "";
-    EditText E_Jam;
-    EditText E_Tanggal;
+    private String Nama_Mahasiswa = "";
+    EditText E_Jam, E_Tanggal;
     Button B_Submit;
-    ImageView IV_Jam;
-    ImageView IV_Tanggal;
+    ImageView IV_Jam, IV_Tanggal;
     Calendar Kalender;
+
+    TimePickerDialog.OnTimeSetListener SetStart = new TimePickerDialog.OnTimeSetListener() {
+        @Override
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            String Jam = Waktu(hourOfDay,minute);
+            E_Jam.setText(Jam);
+        }
+    };
+
+    DatePickerDialog.OnDateSetListener SetTanggal = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            String Tanggal = year + "-" + Bulan(monthOfYear) + "-" + Tanggal(dayOfMonth);
+            E_Tanggal.setText(Tanggal);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,76 +64,47 @@ public class AbsenActivity extends AppCompatActivity {
 
     private void Set_Object() {
         Intent intent = getIntent();
-        Nama_Mahasiswa = intent.getStringExtra("nama");
+        Nama_Mahasiswa = intent.getStringExtra(MainActivity.KEY_NAMA);
         TV_Judul.setText("Nama: " + Nama_Mahasiswa);
     }
 
     private void Listen_B_Submit() {
-        B_Submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String Jam = E_Jam.getText().toString();
-                String Tangal = E_Tanggal.getText().toString();
-                if(Jam.equals("")) {
-                    Pesan("Jam tidak boleh kosong.");
-                    return;
-                }
-                if(Tangal.equals("")) {
-                    Pesan("Tanggal tidak boleh kosong.");
-                    return;
-                }
-                String Pesan = "Nama: " + Nama_Mahasiswa + "\n" +
-                        "Telah melakukan absen pada tanggal: " + Tangal + " pukul: " + Jam;
-                Toast.makeText(AbsenActivity.this, Pesan, Toast.LENGTH_LONG).show();
+        B_Submit.setOnClickListener(v -> {
+            String Jam = E_Jam.getText().toString();
+            String Tangal = E_Tanggal.getText().toString();
+            if(Jam.equals("")) {
+                Pesan("Jam tidak boleh kosong.");
+                return;
             }
+            if(Tangal.equals("")) {
+                Pesan("Tanggal tidak boleh kosong.");
+                return;
+            }
+            String Pesan = "Nama: " + Nama_Mahasiswa + "\n" +
+                    "Telah melakukan absen pada tanggal: " + Tangal + " pukul: " + Jam;
+            Toast.makeText(AbsenActivity.this, Pesan, Toast.LENGTH_LONG).show();
         });
     }
 
     private void Listen_Jam(){
-        IV_Jam.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new TimePickerDialog(
-                        AbsenActivity.this,
-                        SetStart,
-                        Kalender.get(Calendar.HOUR_OF_DAY),
-                        Kalender.get(Calendar.MINUTE),
-                        true
-                ).show();
-            }
-        });
+        IV_Jam.setOnClickListener(v -> new TimePickerDialog(
+                AbsenActivity.this,
+                SetStart,
+                Kalender.get(Calendar.HOUR_OF_DAY),
+                Kalender.get(Calendar.MINUTE),
+                true
+        ).show());
     }
 
     private void Listen_Tanggal(){
-        IV_Tanggal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new DatePickerDialog(
-                        AbsenActivity.this,
-                        SetTanggal,
-                        Kalender.get(Calendar.YEAR),
-                        Kalender.get(Calendar.MONTH),
-                        Kalender.get(Calendar.DAY_OF_MONTH)
-                ).show();
-            }
-        });
+        IV_Tanggal.setOnClickListener(v -> new DatePickerDialog(
+                AbsenActivity.this,
+                SetTanggal,
+                Kalender.get(Calendar.YEAR),
+                Kalender.get(Calendar.MONTH),
+                Kalender.get(Calendar.DAY_OF_MONTH)
+        ).show());
     }
-
-    TimePickerDialog.OnTimeSetListener SetStart = new TimePickerDialog.OnTimeSetListener() {
-        @Override
-        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            String Jam = Waktu(hourOfDay,minute);
-            E_Jam.setText(Jam);
-        }
-    };
-
-    DatePickerDialog.OnDateSetListener SetTanggal = new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-            String Tanggal = year + "-" + Bulan(monthOfYear) + "-" + Tanggal(dayOfMonth);
-            E_Tanggal.setText(Tanggal);
-        }
-    };
 
     String Waktu(int Jam, int Menit) {
         String Str_Jam = "";
